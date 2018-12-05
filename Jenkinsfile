@@ -12,6 +12,7 @@ node('linux') {
 	stage('Deploy') {    
 		sh 'echo build output jar file'   
 	}
+	
 	stage('Report') {    
 		sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins' 
 	}
