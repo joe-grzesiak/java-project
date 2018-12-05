@@ -10,7 +10,7 @@ node('linux') {
 		sh 'ant -f build.xml -v'   
 	}   
 	stage('Deploy') {
-		archiveArtifacts artifacts: '*.jar', onlyIfSuccessful: true    
+		archiveArtifacts artifacts: 'dist/*.jar', onlyIfSuccessful: true    
 		sh 'echo build output jar file'   
 	}
 	stage('Report') {    
