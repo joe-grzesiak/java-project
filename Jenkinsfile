@@ -11,7 +11,7 @@ node('linux') {
 	}   
 	stage('Deploy') {
 		archiveArtifacts artifacts: 'dist/*.jar', onlyIfSuccessful: true    
-		sh 'aws s3 cp /dist/*.jar s3://seis665-03-fall2018-jgrz/'
+		sh 'aws s3 cp dist/*.jar s3://seis665-03-fall2018-jgrz/'
 	}
 	stage('Report') {    
 		sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins' 
