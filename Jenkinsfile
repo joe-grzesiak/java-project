@@ -9,10 +9,10 @@ node('linux') {
 	stage('Build') {    
 		sh 'ant -f build.xml -v'   
 	}   
-	stage('Deploy') {    
+	stage('Deploy') {
+		archiveArtifacts artifacts: '*.jar', onlyIfSuccessful: true    
 		sh 'echo build output jar file'   
 	}
-	
 	stage('Report') {    
 		sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins' 
 	}
